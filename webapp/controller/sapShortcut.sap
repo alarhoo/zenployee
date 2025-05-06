@@ -1,0 +1,14 @@
+[System]
+ Name=XD1
+ Description=400 XD1 ERP Development
+ Client=100
+ [User]
+ Name=USERABC
+ Language=EN
+ [Function]
+ Title=Object Navigator
+ Command=SE80
+ [Configuration]
+ WorkDir=C:\Users\USERABC\Documents\SAP\SAP GUI
+ [Options]
+ Reuse=1

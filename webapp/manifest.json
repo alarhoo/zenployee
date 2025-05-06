@@ -1,0 +1,234 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "zenployee",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.12.5",
+      "toolsId": "5545e56c-4459-4c00-90f4-db76217b4f65"
+    },
+    "dataSources": {
+      "EmployeesMain.json": {
+        "uri": "model/EmployeesMain.json",
+        "type": "JSON"
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "rootView": {
+      "viewName": "zenployee.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    },
+    "dependencies": {
+      "minUI5Version": "1.135.0",
+      "libs": {
+        "sap.ui.layout": {},
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.f": {},
+        "sap.uxap": {}
+      }
+    },
+    "config": {
+      "fullWidth": true
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "zenployee.i18n.i18n",
+          "async": true,
+          "fallbackLocale": "en",
+          "supportedLocales": ["en"]
+        }
+      },
+      "side": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/sideContent.json"
+      },
+      "emp": {
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "EmployeesMain.json",
+        "preload": false
+      },
+      "empInfo": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/EmployeesInfo.json"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "zenployee.view",
+        "controlAggregation": "pages",
+        "controlId": "idApp",
+        "clearControlAggregation": false,
+        "bypassed": {
+          "target": ["NotFound"]
+        }
+      },
+      "routes": [
+        {
+          "name": "Login",
+          "pattern": "Login",
+          "target": ["Login"]
+        },
+        {
+          "name": "Dashboard",
+          "pattern": "Dashboard",
+          "target": ["Dashboard"]
+        },
+        {
+          "name": "ToolpageLayout",
+          "pattern": "ToolpageLayout",
+          "target": ["ToolpageLayout"]
+        },
+        {
+          "name": "EmployeeMaster",
+          "pattern": "EmployeeMaster",
+          "titleTarget": "",
+          "greedy": false,
+          "target": ["EmployeeMaster"]
+        },
+        {
+          "pattern": "EmployeeDetail/{employee}/{layout}",
+          "name": "EmployeeDetail",
+          "target": ["EmployeeMaster", "EmployeeDetail"]
+        },
+        {
+          "name": "EmployeeRegister",
+          "pattern": "EmployeeRegister",
+          "titleTarget": "",
+          "greedy": false,
+          "target": ["EmployeeRegister"]
+        },
+        {
+          "name": "LeaveMaster",
+          "pattern": "LeaveMaster",
+          "titleTarget": "",
+          "greedy": false,
+          "target": ["LeaveMaster"]
+        },
+        {
+          "pattern": "LeaveDetail/{employee}/{layout}",
+          "name": "LeaveDetail",
+          "target": ["LeaveMaster", "LeaveDetail"]
+        },
+        {
+          "name": "Home",
+          "pattern": "Home",
+          "titleTarget": "",
+          "greedy": false,
+          "target": ["Home"]
+        }
+      ],
+      "targets": {
+        "Login": {
+          "viewType": "XML",
+          "viewName": "Login"
+        },
+        "NotFound": {
+          "viewType": "XML",
+          "viewName": "NotFound"
+        },
+        "Home": {
+          "viewType": "XML",
+          "viewName": "Home",
+          "parent": "ToolpageLayout",
+          "controlId": "idMainContentsApp",
+          "controlAggregation": "pages"
+        },
+        "ToolpageLayout": {
+          "viewType": "XML",
+          "viewName": "ToolpageLayout"
+        },
+        "FlexibleColumnLayout": {
+          "viewType": "XML",
+          "viewName": "FlexibleColumnLayout",
+          "controlId": "idMainContentsApp",
+          "controlAggregation": "pages",
+          "parent": "ToolpageLayout",
+          "viewId": "flxView"
+        },
+        "EmployeeMaster": {
+          "viewType": "XML",
+          "viewName": "EmployeeMaster",
+          "parent": "FlexibleColumnLayout",
+          "controlId": "flxColumnLayout",
+          "controlAggregation": "beginColumnPages"
+        },
+        "EmployeeDetail": {
+          "viewType": "XML",
+          "viewName": "EmployeeDetail",
+          "parent": "FlexibleColumnLayout",
+          "controlId": "flxColumnLayout",
+          "controlAggregation": "midColumnPages"
+        },
+        "EmployeeRegister": {
+          "viewType": "XML",
+          "viewName": "EmployeeRegister",
+          "controlId": "idMainContentsApp",
+          "controlAggregation": "pages",
+          "parent": "ToolpageLayout"
+        },
+        "LeaveMaster": {
+          "viewType": "XML",
+          "viewName": "LeaveMaster",
+          "controlAggregation": "beginColumnPages",
+          "controlId": "flxColumnLayout",
+          "parent": "FlexibleColumnLayout"
+        },
+        "LeaveDetail": {
+          "viewType": "XML",
+          "viewName": "LeaveDetail",
+          "parent": "FlexibleColumnLayout",
+          "controlId": "flxColumnLayout",
+          "controlAggregation": "midColumnPages"
+        },
+        "Dashboard": {
+          "viewType": "XML",
+          "viewName": "Dashboard"
+        }
+      }
+    }
+  }
+}

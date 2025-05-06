@@ -1,0 +1,550 @@
+<mvc:View
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:uxap="sap.uxap"
+	xmlns:layout="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:m="sap.m"
+	xmlns:u="sap.ui.unified"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="zenployee.controller.EmployeeRegister"
+	height="100%">
+	<m:Page
+		title="Register Employee"
+		titleLevel="H3">
+		<m:Wizard
+			id="idCreateEmployeeWizard"
+			class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
+			complete="wizardCompletedHandler">
+			<m:WizardStep
+				id="PrimaryStep"
+				title="Primary Details"
+				icon="sap-icon://message-information"
+				validated="true">
+				<f:SimpleForm
+					id="formPrimary"
+					editable="true"
+					layout="ColumnLayout"
+					maxContainerCols="2"
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="12"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="2"
+					columnsM="1"
+					singleContainerFullSize="false">
+					<f:content>
+						<core:Title text="Office" />
+						<m:Label text="Employee ID" />
+						<m:Input
+							id="inpEmpID"
+							type="Number"
+							valueStateText="ID must not be empty. Must be 3 characters."
+							change=".onNameChange"
+							value="{
+								path: 'emp>/empID',
+								type: 'sap.ui.model.type.String',
+								formatOptions: {
+									minIntegerDigits: 1,
+									maxIntegerDigits: 999
+								},
+								constraints: {
+									maxLength: 3,
+									minLength: 3
+								}
+							}"
+							placeholder="007"
+							required="true" />
+						<!--<m:MaskInput mask="999" placeholderSymbol="_" required="true" placeholder="007" valueStateText="ID must not be empty. Must be 3 characters." change=".onNameChange"-->
+						<!--	value="{ path : 'emp>/empID', type: 'sap.ui.model.type.Integer' }" />-->
+						<m:Label text="Email" />
+						<m:Input
+							id="inpEmpEmail"
+							type="Email"
+							placeholder="michael.scott@utegration.com"
+							required="true"
+							change="onValidate"
+							valueStateText="E-mail must be a valid email address."
+							value="{
+								path: 'emp>/empMail',
+								type: '.customEMailType'
+							}" />
+						<m:Label
+							text="Date of Joining"
+							required="true" />
+						<m:DatePicker
+							id="inpEmpDoJ"
+							change="onValidate"
+							value="{
+								path: 'emp>/empDOJ',
+								type: 'sap.ui.model.type.Date',
+								formatOptions: {
+									source: {
+										pattern: 'dd-MM-yyyy'
+									},
+									pattern: 'dd-MM-yyyy'
+								},
+								constraints: {
+									minimum: '01-01-2016'
+								}
+							}" />
+						<m:Label text="Employee Billable" />
+						<m:Switch
+							id="inpEmpBillable"
+							state="true"
+							type="AcceptReject"
+							customTextOn="Yes"
+							customTextOff="No" />
+						<m:Label text="Employment on Contract" />
+						<m:Switch
+							id="inpEmpContract"
+							state="false"
+							customTextOn="Yes"
+							customTextOff="No" />
+						<m:Label text="Profile Type" />
+						<!--<m:MultiComboBox showSecondaryValues="true">-->
+						<!-- <core:ListItem key="basic" text="Basic" additionalText="Basic Add"/>-->
+						<!-- <core:ListItem key="hr" text="HR" additionalText="Basic Add"/>-->
+						<!-- <core:ListItem key="admin" text="Admin" additionalText="Basic Add"/>-->
+						<!--</m:MultiComboBox>-->
+						<m:Label text="Profile Type" />
+						<m:CheckBox
+							text="Basic"
+							selected="true" />
+						<m:CheckBox
+							text="HR"
+							selected="{/child2}" />
+						<m:CheckBox
+							text="Admin"
+							selected="{/child3}" />
+						<m:Label text="Employee Workspace" />
+						<m:RadioButtonGroup
+							id="inpWorkplace"
+							columns="3"
+							valueState="Information"
+							class="sapUiMediumMarginBottom">
+							<m:RadioButton
+								id="rb-india"
+								text="India" />
+							<m:RadioButton
+								id="rb-usa"
+								text="USA" />
+							<m:RadioButton
+								id="rb-canada"
+								text="Canada" />
+						</m:RadioButtonGroup>
+						<!--<m:SegmentedButton selectedKey="india">-->
+						<!-- <m:items>-->
+						<!-- <m:SegmentedButtonItem text="India" key="india"/>-->
+						<!-- <m:SegmentedButtonItem text="USA" key="usa"/>-->
+						<!-- <m:SegmentedButtonItem text="Canada" key="canada"/>-->
+						<!-- </m:items>-->
+						<!--</m:SegmentedButton>-->
+						<!--Management-->
+						<core:Title text="Management" />
+						<m:Label text="Full Name (First Middle Last)" />
+						<m:Input
+							id="inpEmpFName"
+							type="Text"
+							placeholder="Michael"
+							required="true"
+							value="{
+								path: 'emp>/empFName',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<m:Input
+							id="inpEmpMName"
+							type="Text"
+							placeholder="Gary" />
+						<m:Input
+							id="inpEmpLName"
+							type="Text"
+							placeholder="Scott"
+							required="true"
+							value="{
+								path: 'emp>/empLName',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<m:Label text="Date of Birth" />
+						<m:DatePicker
+							id="inpEmpDoB"
+							value="1964-03-15"
+							valueFormat="yyyy-MM-dd"
+							displayFormat="long"
+							change="handleChange"
+							class="sapUiSmallMarginBottom"
+							required="true" />
+						<m:Label text="Gender" />
+						<m:RadioButtonGroup
+							id="inpEmpGender"
+							columns="3"
+							valueState="Information"
+							class="sapUiMediumMarginBottom">
+							<m:RadioButton
+								id="rb-male"
+								text="Male" />
+							<m:RadioButton
+								id="rb-female"
+								text="Female" />
+							<m:RadioButton
+								id="rb-other"
+								text="Other" />
+						</m:RadioButtonGroup>
+						<m:Label text="Designation" />
+						<m:Input
+							id="inpEmpDesignation"
+							type="Text"
+							placeholder="Regional Manager"
+							required="true"
+							value="{
+								path: 'emp>/empDesignation',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<m:Label text="Skills" />
+						<m:MultiInput
+							id="inpEmpSkills"
+							width="100%"
+							showValueHelp="false"
+							placeholder="Masterful Salesmanship" />
+						<m:Label text="Process Lead" />
+						<m:Input
+							id="inpEmpProcLead"
+							type="Text"
+							placeholder="David Wallace"
+							required="true"
+							value="{
+								path: 'emp>/empProcLead',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<!--Verification-->
+						<core:Title text="Contact" />
+						<m:Label text="Resource Contact" />
+						<m:Input
+							id="inpEmpContact"
+							type="Tel"
+							placeholder="1234567890"
+							required="true"
+							maxLength="0"
+							value="{
+								path: 'emp>/empContact',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<m:Label text="Emergency Contact" />
+						<m:Input
+							id="inpEmpEmerContact"
+							type="Tel"
+							placeholder="2005110126"
+							required="true"
+							value="{
+								path: 'emp>/empEmergencyContact',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<m:Label text="Emergency Contact Name" />
+						<m:Input
+							id="inpEmpEmerContName"
+							type="Text"
+							placeholder="Todd F. Packer" />
+						<m:Label text="Relation to Contact" />
+						<m:Select
+							id="inpEmpRelation"
+							forceSelection="true"
+							selectedKey="friends">
+							<core:Item
+								key="parents"
+								text="Parents" />
+							<core:Item
+								key="spouse"
+								text="Spouse" />
+							<core:Item
+								key="friends"
+								text="Friends" />
+							<core:Item
+								key="others"
+								text="Others" />
+						</m:Select>
+					</f:content>
+				</f:SimpleForm>
+			</m:WizardStep>
+			<m:WizardStep
+				id="SecondaryStep"
+				title="Secondary Details"
+				icon="sap-icon://addresses"
+				validated="true">
+				<f:SimpleForm
+					editable="true"
+					layout="ColumnLayout"
+					maxContainerCols="2"
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="12"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="2"
+					columnsM="1"
+					singleContainerFullSize="false">
+					<f:content>
+						<!--Local Address-->
+						<core:Title text="Local Address" />
+						<m:Label text="Address" />
+						<m:TextArea
+							rows="3"
+							placeholder="13927, Saticoy Street in Van Nuys"
+							valueLiveUpdate="true"
+							value="{
+								path: 'emp>/empAddress/local/address',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<m:Label text="Region" />
+						<m:Input
+							type="Text"
+							placeholder="Scranton"
+							valueLiveUpdate="true"
+							value="{
+								path: 'emp>/empAddress/local/region',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<m:Label text="State" />
+						<m:Input
+							type="Text"
+							placeholder="Pennsylvania"
+							valueLiveUpdate="true"
+							value="{
+								path: 'emp>/empAddress/local/state',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<m:Label text="Country" />
+						<m:Input
+							type="Text"
+							placeholder="USA"
+							valueLiveUpdate="true"
+							value="{
+								path: 'emp>/empAddress/local/country',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<m:Label text="Postal Code" />
+						<m:Input
+							type="Text"
+							placeholder="91405"
+							valueLiveUpdate="true"
+							value="{
+								path: 'emp>/empAddress/local/postalCode',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<!--Permanent Address-->
+						<core:Title text="Permanent Address" />
+						<m:Label text="Same as above" />
+						<m:CheckBox
+							id="chkAddress"
+							selected="true"
+							select="handleChkAddressSelect" />
+						<m:Label text="Address" />
+						<m:TextArea
+							id="txtAreaPermAddress"
+							rows="3"
+							placeholder="13927, Saticoy Street in Van Nuys"
+							editable="false"
+							value="{
+								path: 'emp>/empAddress/local/address',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<m:Label text="Region" />
+						<m:Input
+							id="inpPermRegion"
+							type="Text"
+							placeholder="Scranton"
+							editable="false"
+							value="{
+								path: 'emp>/empAddress/local/region',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<m:Label text="State" />
+						<m:Input
+							id="inpPermState"
+							type="Text"
+							placeholder="Pennsylvania"
+							editable="false"
+							value="{
+								path: 'emp>/empAddress/local/state',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<m:Label text="Country" />
+						<m:Input
+							id="inpPermCountry"
+							type="Text"
+							placeholder="USA"
+							editable="false"
+							value="{
+								path: 'emp>/empAddress/local/country',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<m:Label text="Postal Code" />
+						<m:Input
+							id="inpPermPostCode"
+							type="Text"
+							placeholder="91405"
+							editable="false"
+							value="{
+								path: 'emp>/empAddress/local/postalCode',
+								type: 'sap.ui.model.type.String',
+								constraints: {
+									minLength: 1
+								}
+							}" />
+						<!--Verification-->
+						<core:Title text="Verification" />
+						<m:Label text="PAN Card" />
+						<m:Input
+							type="Text"
+							placeholder="1234" />
+						<m:Label text="Aadhar Card" />
+						<m:Input
+							type="Number"
+							placeholder="1234" />
+						<m:Label text="Voter Card" />
+						<m:Input
+							type="Text"
+							placeholder="1234" />
+						<core:Title text="" />
+						<m:Label text="Driving License" />
+						<m:Input
+							type="Text"
+							placeholder="1234" />
+						<m:Label text="Passport" />
+						<m:Input
+							type="Text"
+							placeholder="1234" />
+						<m:Label text="SSN" />
+						<m:Input
+							type="Text"
+							placeholder="1234" />
+					</f:content>
+				</f:SimpleForm>
+			</m:WizardStep>
+			<m:WizardStep
+				id="PassportStep"
+				title="Passport Details"
+				icon="sap-icon://attachment-photo"
+				validated="true">
+				<f:SimpleForm
+					editable="true"
+					layout="ColumnLayout"
+					maxContainerCols="2"
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="12"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="2"
+					columnsM="1"
+					singleContainerFullSize="false">
+					<f:content>
+						<!--Passport Verification-->
+						<core:Title text="Passport Verification" />
+						<m:Label text="First Name as Passport" />
+						<m:Input
+							type="Text"
+							placeholder="1234" />
+						<m:Input
+							type="Text"
+							placeholder="1234" />
+						<m:Label text="Date of Birth as Passport" />
+						<m:DatePicker
+							id="inpDoBasP"
+							value=""
+							valueFormat="yyyy-MM-dd"
+							displayFormat="long" />
+						<m:Label text="Date of Passport Issue" />
+						<m:DatePicker
+							id="inpDoPI"
+							value=""
+							valueFormat="yyyy-MM-dd"
+							displayFormat="long" />
+						<m:Label text="Date of Passport Expiry" />
+						<m:DatePicker
+							id="inpDoPE"
+							value=""
+							valueFormat="yyyy-MM-dd"
+							displayFormat="long" />
+						<m:Label text="Place of Passport Issue" />
+						<m:Input
+							type="Text"
+							placeholder="1234" />
+						<m:Label text="Date of Visa Issue" />
+						<m:DatePicker
+							id="inpDoVI"
+							value=""
+							valueFormat="yyyy-MM-dd"
+							displayFormat="long" />
+						<m:Label text="Date of Visa Expiry" />
+						<m:DatePicker
+							id="inpDoVE"
+							value=""
+							valueFormat="yyyy-MM-dd"
+							displayFormat="long" />
+					</f:content>
+				</f:SimpleForm>
+			</m:WizardStep>
+		</m:Wizard>
+	</m:Page>
+</mvc:View>

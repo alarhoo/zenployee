@@ -1,0 +1,115 @@
+<mvc:View
+	controllerName="zenployee.controller.LeaveDetail"
+	xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns:m="sap.m"
+	height="100%">
+	<m:Page title="Leave Details">
+		<m:content>
+			<Table
+				id="table"
+				selectionMode="MultiToggle"
+				rows="{/ProductCollection}"
+				visibleRowCount="7"
+				enableCellFilter="{ui>/cellFilterOn}"
+				filter="filterPrice"
+				ariaLabelledBy="title">
+				<extension>
+					<m:OverflowToolbar>
+						<m:Title
+							id="title"
+							text="Products" />
+						<m:ToolbarSpacer />
+						<m:ToggleButton
+							icon="sap-icon://complete"
+							tooltip="Show available products only"
+							press="toggleAvailabilityFilter"
+							pressed="{ui>/availabilityFilterOn}" />
+						<m:ToggleButton
+							icon="sap-icon://grid"
+							tooltip="Enable / Disable Cell Filter Functionality"
+							pressed="{ui>/cellFilterOn}" />
+						<m:Button
+							icon="sap-icon://decline"
+							tooltip="Clear all filters"
+							press="clearAllFilters" />
+						<m:ToolbarSeparator />
+						<m:SearchField
+							placeholder="Filter"
+							value="{ui>/globalFilter}"
+							search="filterGlobally"
+							width="15rem" />
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column
+						width="11rem"
+						filterProperty="Name">
+						<m:Label text="Emp. ID" />
+						<template>
+							<m:Text
+								text="{Name}"
+								wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						width="11rem"
+						filterProperty="Category"
+						defaultFilterOperator="StartsWith">
+						<m:Label text="Name" />
+						<template>
+							<m:Text
+								text="{Category}"
+								wrapping="false" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Leave Type" />
+						<template>
+							<m:Link
+								text="Show Image"
+								href="{ProductPicUrl}"
+								target="_blank" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="Start Date" />
+						<template>
+							<m:Text
+								text="{
+									path: 'DeliveryDate',
+									type: 'sap.ui.model.type.Date',
+									formatOptions: {
+										source: {
+											pattern: 'timestamp'
+										}
+									}
+								}"
+								wrapping="false" />
+						</template>
+					</Column>
+					<Column width="9rem">
+						<m:Label text="End Date" />
+						<template>
+							<m:Text
+								text="{
+									path: 'DeliveryDate',
+									type: 'sap.ui.model.type.Date',
+									formatOptions: {
+										source: {
+											pattern: 'timestamp'
+										}
+									}
+								}"
+								wrapping="false" />
+						</template>
+					</Column>
+				</columns>
+				<footer>
+					<m:OverflowToolbar id="infobar"/>
+				</footer>
+			</Table>
+		</m:content>
+	</m:Page>
+</mvc:View>

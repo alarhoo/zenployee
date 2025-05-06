@@ -1,0 +1,98 @@
+<mvc:View
+	displayBlock="true"
+	controllerName="zenployee.controller.EmployeeMaster"
+	height="100%"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:mvc="sap.ui.core.mvc">
+	<f:DynamicPage
+		id="dynamicPageId"
+		toggleHeaderOnTitleClick="false">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Employees (121)" />
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Content -->
+		<f:content>
+			<Table
+				id="employeeTable"
+				inset="false"
+				items="{
+					path: 'emp>/',
+					sorter: {
+						path: 'Name'
+					}
+				}"
+				class="sapFDynamicPageAlignContent sapUiSmallMarginBottom"
+				width="auto">
+				<headerToolbar>
+					<OverflowToolbar>
+						<ToolbarSpacer />
+						<SearchField
+							search="onSearch"
+							width="17.5rem" />
+						<OverflowToolbarButton
+							icon="sap-icon://add"
+							type="Transparent"
+							press="onAdd" />
+						<OverflowToolbarButton
+							icon="sap-icon://sort"
+							type="Transparent"
+							press="onSort" />
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="12em">
+						<Text text="Employee" />
+					</Column>
+					<Column
+						minScreenWidth="Desktop"
+						demandPopin="true">
+						<Text text="Description" />
+					</Column>
+					<Column hAlign="End">
+						<Text text="Active" />
+					</Column>
+				</columns>
+				<items>
+					<!--<StandardListItem title="{emp>emp_main_first} {emp>emp_main_last}" description="{emp>emp_main_designation}"-->
+					<!--	icon="./test-resources/sap/uxap/images/imageID_275314.png" iconDensityAware="false" iconInset="false" type="Navigation"-->
+					<!--	press="onListItemPress" info="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"-->
+					<!--	infoState="{= ${emp>emp_main_active} === '1' ? 'Success' : 'Error'}"/>-->
+					<ColumnListItem
+						type="Navigation"
+						press="onListItemPress">
+						<cells>
+							<ObjectIdentifier
+								title="{emp>emp_main_first} {emp>emp_main_last}"
+								text="{emp>emp_main_designation}" />
+							<ObjectIdentifier
+								title="{emp>emp_main_dob}"
+								text="{emp>emp_main_email}" />
+							<ObjectStatus
+								text="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"
+								state="{= ${emp>emp_main_active} === '1' ? 'Success' : 'Error'}"/>
+							<!--<ObjectIdentifier title="{emp>emp_main_first} {emp>emp_main_last}" text="{emp>emp_main_designation}"/>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+		<!-- DynamicPage Footer -->
+		<f:footer>
+			<OverflowToolbar>
+				<ToolbarSpacer />
+				<Button
+					type="Accept"
+					text="Accept" />
+				<Button
+					type="Reject"
+					text="Reject" />
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
+</mvc:View>

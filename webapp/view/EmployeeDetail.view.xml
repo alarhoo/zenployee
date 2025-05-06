@@ -1,0 +1,326 @@
+<mvc:View
+	displayBlock="true"
+	controllerName="zenployee.controller.EmployeeDetail"
+	height="100%"
+	xmlns:m="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:layout="sap.ui.layout"
+	xmlns:tnt="sap.tnt"
+	xmlns="sap.uxap"
+	xmlns:core="sap.ui.core">
+	<ObjectPageLayout id="objectPageLayout">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title
+						text="{emp>emp_main_first} {emp>emp_main_last}"
+						wrapping="true" />
+				</expandedHeading>
+				<snappedHeading>
+					<m:HBox>
+						<m:VBox>
+							<m:Avatar
+								src="./test-resources/sap/uxap/images/imageID_275314.png"
+								class="sapUiSmallMarginEnd" />
+						</m:VBox>
+						<m:VBox>
+							<m:Title
+								text="{emp>emp_main_first} {emp>emp_main_last}"
+								wrapping="true" />
+							<m:HBox>
+								<m:Text
+									text="{emp>emp_main_designation}"
+									class="sapUiTinyMarginEnd" />
+								<tnt:InfoLabel
+									text="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"
+									colorScheme="{= ${emp>emp_main_active} === '1' ? 7 : 3}"
+									displayOnly="true" />
+							</m:HBox>
+						</m:VBox>
+					</m:HBox>
+				</snappedHeading>
+				<expandedContent>
+					<m:HBox>
+						<m:Text
+							text="{emp>emp_main_designation}"
+							class="sapUiTinyMarginEnd" />
+						<tnt:InfoLabel
+							text="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"
+							colorScheme="{= ${emp>emp_main_active} === '1' ? 7 : 3}"
+							displayOnly="true" />
+					</m:HBox>
+				</expandedContent>
+				<navigationActions>
+					<m:OverflowToolbarButton
+						type="Transparent"
+						icon="sap-icon://full-screen"
+						press="handleFullScreen"
+						id="enterFullScreenBtn"
+						tooltip="Enter Full Screen Mode"
+						visible="{= ${/actionButtonsInfo/midColumn/fullScreen} !== null }" />
+					<m:OverflowToolbarButton
+						type="Transparent"
+						icon="sap-icon://exit-full-screen"
+						press="handleExitFullScreen"
+						id="exitFullScreenBtn"
+						tooltip="Exit Full Screen Mode"
+						visible="{= ${/actionButtonsInfo/midColumn/exitFullScreen} !== null }" />
+					<m:OverflowToolbarButton
+						type="Transparent"
+						icon="sap-icon://decline"
+						press="handleClose"
+						tooltip="Close column"
+						visible="{= ${/actionButtonsInfo/midColumn/closeColumn} !== null }" />
+				</navigationActions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<m:FlexBox
+				wrap="Wrap"
+				fitContainer="true">
+				<m:Avatar
+					src="./test-resources/sap/uxap/images/imageID_275314.png"
+					class="sapUiMediumMarginEnd sapUiSmallMarginBottom"
+					displaySize="L" />
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<!--<m:Title text="Contact Information" class="sapUiTinyMarginBottom"/>-->
+					<m:HBox class="sapUiTinyMarginBottom">
+						<core:Icon
+							src="sap-icon://account"
+							tooltip="Full Name" />
+						<m:Text
+							text=" {emp>emp_main_first} {emp>emp_main_last}"
+							class="sapUiSmallMarginBegin" />
+					</m:HBox>
+					<m:HBox class="sapUiTinyMarginBottom">
+						<core:Icon
+							src="sap-icon://outgoing-call"
+							tooltip="Phone Number" />
+						<m:Link
+							id="empTel"
+							text=" +1 234 5678"
+							press="handleTelPress"
+							class="sapUiSmallMarginBegin" />
+					</m:HBox>
+					<m:HBox class="sapUiTinyMarginBottom">
+						<core:Icon
+							src="sap-icon://email"
+							tooltip="Email Address" />
+						<m:Link
+							id="empEmail"
+							text="{emp>emp_main_email}"
+							press="handleEmailPress"
+							class="sapUiSmallMarginBegin" />
+					</m:HBox>
+					<m:HBox>
+						<core:Icon
+							src="sap-icon://account"
+							tooltip="Birthday" />
+						<m:Text
+							text=" {emp>emp_main_dob}"
+							class="sapUiSmallMarginBegin" />
+					</m:HBox>
+				</m:VBox>
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title
+						text="Office"
+						class="sapUiTinyMarginBottom" />
+					<m:HBox class="sapUiTinyMarginBottom">
+						<m:Label
+							text="Reports To:"
+							class="sapUiSmallMarginEnd" />
+						<m:Link text="{emp>emp_main_lead}" />
+					</m:HBox>
+					<m:HBox class="sapUiTinyMarginBottom">
+						<m:Label
+							text="Joined On:"
+							class="sapUiSmallMarginEnd" />
+						<m:Text text="{emp>emp_main_doj}" />
+					</m:HBox>
+					<m:HBox class="sapUiTinyMarginBottom">
+						<m:Label
+							text="Designation:"
+							class="sapUiSmallMarginEnd" />
+						<m:Text text="{emp>emp_main_designation}" />
+					</m:HBox>
+					<!--<m:HBox>-->
+					<!--	<m:Label text="Birthday:" class="sapUiSmallMarginEnd"/>-->
+					<!--	<m:Text text="{emp>emp_main_dob}"/>-->
+					<!--</m:HBox>-->
+				</m:VBox>
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title
+						text="Local Address"
+						class="sapUiTinyMarginBottom" />
+					<m:HBox class="sapUiTinyMarginBottom">
+						<m:Label
+							text="Address:"
+							class="sapUiTinyMarginEnd" />
+						<m:Text text="#38, Junnasandra" />
+					</m:HBox>
+					<m:HBox class="sapUiTinyMarginBottom">
+						<m:Label
+							text="City:"
+							class="sapUiTinyMarginEnd" />
+						<m:Text text="Bengaluru - 560035" />
+					</m:HBox>
+					<m:HBox>
+						<m:Label
+							text="State:"
+							class="sapUiTinyMarginEnd" />
+						<m:Text text="Karnataka" />
+					</m:HBox>
+				</m:VBox>
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title
+						text="Skills"
+						class="sapUiTinyMarginBottom" />
+					<m:Text text="{= ${emp>emp_main_skill} === null ? 'NA' : ${emp>emp_main_skill}}" />
+				</m:VBox>
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title
+						text="Status:"
+						class="sapUiTinyMarginBottom" />
+					<m:ObjectStatus
+						text="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"
+						state="{= ${emp>emp_main_active} === '1' ? 'Success' : 'Error'}"
+						class="sapMObjectStatusLarge" />
+				</m:VBox>
+				<!--<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">-->
+				<!--	<m:Title text="Working Since:" class="sapUiTinyMarginBottom"/>-->
+				<!--	<m:ObjectStatus text="12 Days" icon="sap-icon://shipping-status" class="sapMObjectStatusLarge"/>-->
+				<!--</m:VBox>-->
+				<!--<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">-->
+				<!--	<m:Title text="Assembly Option:" class="sapUiTinyMarginBottom"/>-->
+				<!--	<m:ObjectStatus text="To Be Selected" state="Error" class="sapMObjectStatusLarge"/>-->
+				<!--</m:VBox>-->
+			</m:FlexBox>
+		</headerContent>
+		<sections>
+			<ObjectPageSection
+				titleUppercase="false"
+				id="basicSection"
+				title="{i18n>objectPageBasicText}">
+				<subSections>
+					<ObjectPageSubSection
+						title="Contact Details"
+						titleUppercase="false">
+						<blocks>
+							<m:VBox class="sapUiSmallMargin">
+								<f:SimpleForm
+									editable="false"
+									layout="ColumnLayout"
+									maxContainerCols="2"
+									columnsM="2"
+									columnsL="3"
+									columnsXL="4">
+									<f:content>
+										<m:Label text="Contact Number" />
+										<m:Text text="{emp>emp_main_first}" />
+										<m:Label text="Emergency Contact Name" />
+										<m:Text text="{emp>emp_main_first}" />
+										<m:Label text="Emergency Contact Number" />
+										<m:Text text="{emp>emp_main_first}" />
+										<m:Label text="Relation to Contact" />
+										<m:Text text="{emp>emp_main_first}" />
+									</f:content>
+								</f:SimpleForm>
+							</m:VBox>
+						</blocks>
+					</ObjectPageSubSection>
+					<ObjectPageSubSection
+						title="Local Address"
+						titleUppercase="false">
+						<blocks>
+							<m:VBox class="sapUiSmallMargin">
+								<f:SimpleForm
+									editable="false"
+									layout="ColumnLayout">
+									<f:content>
+										<m:Label text="Address" />
+										<m:Text
+											id="nameText"
+											text="{emp>emp_main_first}" />
+										<m:Label text="Region" />
+										<m:Text text="{emp>emp_main_first}" />
+										<m:Label text="State" />
+										<m:Text text="{emp>emp_main_first}" />
+										<m:Label text="Country" />
+										<m:Text
+											id="countryText"
+											text="{emp>emp_main_first}" />
+									</f:content>
+								</f:SimpleForm>
+							</m:VBox>
+						</blocks>
+					</ObjectPageSubSection>
+					<ObjectPageSubSection
+						title="Permanent Address"
+						titleUppercase="false">
+						<blocks>
+							<m:VBox class="sapUiSmallMargin">
+								<f:SimpleForm
+									backgroundDesign="Solid"
+									editable="true"
+									layout="ColumnLayout">
+									<f:content>
+										<m:Label text="Address" />
+										<m:Text text="{emp>emp_main_first}" />
+										<m:Label text="Region" />
+										<m:Text text="{emp>emp_main_first}" />
+										<m:Label text="State" />
+										<m:Text text="{emp>emp_main_first}" />
+										<m:Label text="Country" />
+										<m:Text text="{emp>emp_main_first}" />
+									</f:content>
+								</f:SimpleForm>
+							</m:VBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection
+				titleUppercase="false"
+				title="Verification"
+				importance="Medium">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+							<m:Label text="PAN Card" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Adhar Card" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Passport Card" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Voter Card" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Driving Card" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="SSN" />
+							<m:Text text="{emp>emp_main_dob}" />
+						</blocks>
+					</ObjectPageSubSection>
+					<ObjectPageSubSection
+						title="Passport"
+						titleUppercase="false">
+						<blocks>
+							<m:Label text="PAN Card" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Adhar Card" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Passport Card" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Voter Card" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Driving Card" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="SSN" />
+							<m:Text text="{emp>emp_main_dob}" />
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>

@@ -1,0 +1,47 @@
+<mvc:View
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m"
+	xmlns:fc="sap.f"
+	controllerName="zenployee.controller.Login"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<FlexBox
+		height="100%"
+		alignItems="Center"
+		justifyContent="Center">
+		<items>
+			<fc:Card>
+				<fc:content>
+					<f:SimpleForm
+						title="{i18n>loginFormTitle}"
+						editable="true"
+						layout="ResponsiveGridLayout">
+						<f:content>
+							<Label text="{i18n>loginFormUserLabel}" />
+							<Input
+								id="username"
+								type="Email"
+								placeholder="{i18n>loginFormUserPlaceholder}"
+								change="validateEmail" />
+							<Label text="{i18n>loginFormPasswordLabel}" />
+							<Input
+								id="password"
+								type="Password"
+								placeholder="{i18n>loginFormPasswordPlaceholder}" />
+							<Label />
+							<Button
+								type="Emphasized"
+								text="{i18n>loginFormSubmitButtonText}"
+								press="onPressLogin" />
+							<Link
+								text="{i18n>loginFormLinkText}"
+								press="handleLinkPress" />
+						</f:content>
+					</f:SimpleForm>
+				</fc:content>
+			</fc:Card>
+		</items>
+	</FlexBox>
+</mvc:View>

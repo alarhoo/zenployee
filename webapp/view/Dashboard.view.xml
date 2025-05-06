@@ -1,0 +1,49 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	controllerName="zenployee.controller.Dashboard"
+	xmlns:f="sap.f">
+	<f:ShellBar
+		title="{i18n>homeShellTitle}"
+		secondTitle="{i18n>homeShellSecondTitle}"
+		homeIcon="./img/uplan-logo.png"
+		showCopilot="true"
+		showNotifications="true"
+		showProductSwitcher="true"
+		notificationsNumber="2">
+		<f:profile>
+			<Avatar initials="UI" />
+		</f:profile>
+	</f:ShellBar>
+	<Page
+		title="Title"
+		showHeader="false">
+		<content>
+			<FlexBox
+				height="100%"
+				alignItems="Center"
+				justifyContent="Center">
+				<items>
+					<GenericTile
+						class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+						header="{i18n>homeTileHRHeader}"
+						subheader="{i18n>homeTileHRSubHeader}"
+						press="onPressHR">
+						<TileContent footer="{i18n>homeTileHRContentFooter}">
+							<ImageContent src="sap-icon://customer" />
+						</TileContent>
+					</GenericTile>
+					<GenericTile
+						class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+						header="{i18n>homeTileAdminHeader}"
+						subheader="{i18n>homeTileAdminSubHeader}"
+						press="onPressAdmin">
+						<TileContent footer="{i18n>homeTileAdminContentFooter}">
+							<ImageContent src="sap-icon://key-user-settings" />
+						</TileContent>
+					</GenericTile>
+				</items>
+			</FlexBox>
+		</content>
+	</Page>
+</mvc:View>
