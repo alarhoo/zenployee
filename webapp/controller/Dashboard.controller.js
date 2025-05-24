@@ -1,19 +1,19 @@
-sap.ui.define(['sap/ui/core/mvc/Controller'], function (Controller) {
-  'use strict'
-  var oRouter
-  return Controller.extend('zenployee.controller.Dashboard', {
-    onInit: function () {
-      oRouter = sap.ui.core.UIComponent.getRouterFor(this)
-    },
+sap.ui.define([
+	'./BaseController'
+], function (Controller) {
 
-    onPressHR: function () {
-      // var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-      oRouter.navTo('ToolpageLayout')
-    },
+	const className = 'zenployee.controller.Dashboard'
+	const _Controller = Controller.extend(className, {
+		constructor: function () {}
+	})
 
-    onPressAdmin: function () {
-      // var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-      oRouter.navTo('ToolpageLayout')
-    },
-  })
+	_Controller.prototype.onPressHR= function () {
+		this.getRouter().navTo('ToolpageLayout')
+	}
+
+	_Controller.prototype.onPressAdmin= function () {
+		this.getRouter().navTo('ToolpageLayout')
+	}
+
+	return _Controller
 })

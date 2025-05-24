@@ -1,15 +1,8 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-],
-    /**
-     * @param {typeof sap.ui.core.mvc.Controller} Controller
-     */
-    function (Controller) {
-        "use strict";
+	'sap/ui/core/mvc/Controller'
+], function (Controller) {
 
-        return Controller.extend("zenployee.controller.Main", {
-            onInit: function () {
-
-            }
-        });
-    });
+	return Controller.extend('zenployee.controller.Main', {
+		onInit: function () {}
+	})
+})

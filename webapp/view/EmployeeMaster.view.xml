@@ -6,81 +6,47 @@
 	xmlns:f="sap.f"
 	xmlns:mvc="sap.ui.core.mvc">
 	<f:DynamicPage
-		id="dynamicPageId"
+		id="idDynamicPage"
 		toggleHeaderOnTitleClick="false">
 		<!-- DynamicPage Title -->
 		<f:title>
 			<f:DynamicPageTitle>
 				<f:heading>
-					<Title text="Employees (121)" />
+					<Title text="Employees ({emp>/length})" />
 				</f:heading>
 			</f:DynamicPageTitle>
 		</f:title>
 		<!-- DynamicPage Content -->
 		<f:content>
-			<Table
-				id="employeeTable"
-				inset="false"
-				items="{
-					path: 'emp>/',
-					sorter: {
-						path: 'Name'
-					}
-				}"
-				class="sapFDynamicPageAlignContent sapUiSmallMarginBottom"
-				width="auto">
-				<headerToolbar>
-					<OverflowToolbar>
-						<ToolbarSpacer />
-						<SearchField
-							search="onSearch"
-							width="17.5rem" />
-						<OverflowToolbarButton
-							icon="sap-icon://add"
-							type="Transparent"
-							press="onAdd" />
-						<OverflowToolbarButton
-							icon="sap-icon://sort"
-							type="Transparent"
-							press="onSort" />
-					</OverflowToolbar>
-				</headerToolbar>
-				<columns>
-					<Column width="12em">
-						<Text text="Employee" />
-					</Column>
-					<Column
-						minScreenWidth="Desktop"
-						demandPopin="true">
-						<Text text="Description" />
-					</Column>
-					<Column hAlign="End">
-						<Text text="Active" />
-					</Column>
-				</columns>
-				<items>
-					<!--<StandardListItem title="{emp>emp_main_first} {emp>emp_main_last}" description="{emp>emp_main_designation}"-->
-					<!--	icon="./test-resources/sap/uxap/images/imageID_275314.png" iconDensityAware="false" iconInset="false" type="Navigation"-->
-					<!--	press="onListItemPress" info="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"-->
-					<!--	infoState="{= ${emp>emp_main_active} === '1' ? 'Success' : 'Error'}"/>-->
-					<ColumnListItem
-						type="Navigation"
-						press="onListItemPress">
-						<cells>
-							<ObjectIdentifier
-								title="{emp>emp_main_first} {emp>emp_main_last}"
-								text="{emp>emp_main_designation}" />
-							<ObjectIdentifier
-								title="{emp>emp_main_dob}"
-								text="{emp>emp_main_email}" />
-							<ObjectStatus
-								text="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"
-								state="{= ${emp>emp_main_active} === '1' ? 'Success' : 'Error'}"/>
-							<!--<ObjectIdentifier title="{emp>emp_main_first} {emp>emp_main_last}" text="{emp>emp_main_designation}"/>-->
-						</cells>
-					</ColumnListItem>
-				</items>
-			</Table>
+			<List items="{emp>/}">
+				<ObjectListItem
+					title="{emp>emp_main_first} {emp>emp_main_last}"
+					number="{emp>emp_main_id}"
+					numberUnit=""
+					icon="/test-resources/sap/uxap/images/imageID_275314.png"
+					press="onListItemPress"
+					type="Active">
+					<firstStatus>
+						<ObjectStatus
+							text="{= ${emp>emp_main_billable} === '1' ? 'Full-time' : 'Contractor'}"
+							state="{= ${emp>emp_main_billable} === '1' ? 'Success' : 'Warning'}" />
+					</firstStatus>
+					<secondStatus>
+						<ObjectStatus
+							icon="{= ${emp>emp_main_active} === '1' ? 'sap-icon://sys-enter' : 'sap-icon://sys-cancel'}"
+							text="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"
+							state="{= ${emp>emp_main_active} === '1' ? 'Indication14' : 'Indication12'}"
+							inverted="true" />
+					</secondStatus>
+					<!-- <markers>
+						<ObjectMarker type="Favorite" />
+						<ObjectMarker type="Locked" />
+					</markers> -->
+					<ObjectAttribute text="{emp>emp_main_designation}" />
+					<ObjectAttribute text="{emp>emp_main_email}" />
+					<ObjectAttribute text="{emp>emp_main_dob}" />
+				</ObjectListItem>
+			</List>
 		</f:content>
 		<!-- DynamicPage Footer -->
 		<f:footer>

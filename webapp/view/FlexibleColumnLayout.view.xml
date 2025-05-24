@@ -1,5 +1,4 @@
 <mvc:View
-	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.f"
 	controllerName="zenployee.controller.FlexibleColumnLayout"

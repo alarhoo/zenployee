@@ -1,7 +1,8 @@
-sap.ui.define(['zenployee/controller/BaseController'], function (BaseController) {
-  'use strict'
+sap.ui.define([
+	'zenployee/controller/BaseController'
+], function (BaseController) {
 
-  return BaseController.extend('zenployee.controller.NotFound', {
-    onInit: function () {},
-  })
+	return BaseController.extend('zenployee.controller.NotFound', {
+		onInit: function () {},
+	})
 })

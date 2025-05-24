@@ -1,0 +1,41 @@
+{
+  "html.format.indentHandlebars": true,
+  "html.format.unformatted": "",
+  "html.format.indentInnerHtml": true,
+  "html.format.wrapAttributes": "preserve",
+  "xmlTools.enableXmlTreeViewCursorSync": true,
+  "xmlTools.enforcePrettySelfClosingTagOnFormat": true,
+  "xmlTools.splitAttributesOnFormat": true,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "eslint.format.enable": true,
+  "eslint.validate": ["javascript"],
+  "editor.codeActionsOnSave": [
+    "source.addMissingImports"
+    // "source.fixAll.eslint"
+  ],
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "iljapostnovs.ui5plugin"
+  },
+  "[json][jsonc][yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "explorer.confirmDelete": false,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.validate.enable": false,
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  }
+}

@@ -5,11 +5,12 @@
 	xmlns:m="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:f="sap.ui.layout.form"
-	xmlns:layout="sap.ui.layout"
 	xmlns:tnt="sap.tnt"
 	xmlns="sap.uxap"
 	xmlns:core="sap.ui.core">
-	<ObjectPageLayout id="objectPageLayout">
+	<ObjectPageLayout
+		id="idObjectPageLayout"
+		useIconTabBar="true">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<expandedHeading>
@@ -34,8 +35,7 @@
 									class="sapUiTinyMarginEnd" />
 								<tnt:InfoLabel
 									text="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"
-									colorScheme="{= ${emp>emp_main_active} === '1' ? 7 : 3}"
-									displayOnly="true" />
+									colorScheme="{= ${emp>emp_main_active} === '1' ? 8 : 2}" />
 							</m:HBox>
 						</m:VBox>
 					</m:HBox>
@@ -47,23 +47,24 @@
 							class="sapUiTinyMarginEnd" />
 						<tnt:InfoLabel
 							text="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"
-							colorScheme="{= ${emp>emp_main_active} === '1' ? 7 : 3}"
-							displayOnly="true" />
+							colorScheme="{= ${emp>emp_main_active} === '1' ? 8 : 2}" />
 					</m:HBox>
 				</expandedContent>
 				<navigationActions>
+					<m:Button
+						text="Edit"
+						type="Emphasized"
+						visible="{= ${emp>emp_main_active} === '1' ? true : false}" />
 					<m:OverflowToolbarButton
 						type="Transparent"
 						icon="sap-icon://full-screen"
 						press="handleFullScreen"
-						id="enterFullScreenBtn"
 						tooltip="Enter Full Screen Mode"
 						visible="{= ${/actionButtonsInfo/midColumn/fullScreen} !== null }" />
 					<m:OverflowToolbarButton
 						type="Transparent"
 						icon="sap-icon://exit-full-screen"
 						press="handleExitFullScreen"
-						id="exitFullScreenBtn"
 						tooltip="Exit Full Screen Mode"
 						visible="{= ${/actionButtonsInfo/midColumn/exitFullScreen} !== null }" />
 					<m:OverflowToolbarButton
@@ -72,6 +73,11 @@
 						press="handleClose"
 						tooltip="Close column"
 						visible="{= ${/actionButtonsInfo/midColumn/closeColumn} !== null }" />
+					<m:OverflowToolbarButton
+						icon="sap-icon://action"
+						type="Transparent"
+						text="Share"
+						tooltip="action" />
 				</navigationActions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
@@ -98,7 +104,6 @@
 							src="sap-icon://outgoing-call"
 							tooltip="Phone Number" />
 						<m:Link
-							id="empTel"
 							text=" +1 234 5678"
 							press="handleTelPress"
 							class="sapUiSmallMarginBegin" />
@@ -108,14 +113,13 @@
 							src="sap-icon://email"
 							tooltip="Email Address" />
 						<m:Link
-							id="empEmail"
 							text="{emp>emp_main_email}"
 							press="handleEmailPress"
 							class="sapUiSmallMarginBegin" />
 					</m:HBox>
 					<m:HBox>
 						<core:Icon
-							src="sap-icon://account"
+							src="sap-icon://appointment"
 							tooltip="Birthday" />
 						<m:Text
 							text=" {emp>emp_main_dob}"
@@ -178,7 +182,7 @@
 						class="sapUiTinyMarginBottom" />
 					<m:Text text="{= ${emp>emp_main_skill} === null ? 'NA' : ${emp>emp_main_skill}}" />
 				</m:VBox>
-				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+				<!-- <m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 					<m:Title
 						text="Status:"
 						class="sapUiTinyMarginBottom" />
@@ -186,7 +190,7 @@
 						text="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"
 						state="{= ${emp>emp_main_active} === '1' ? 'Success' : 'Error'}"
 						class="sapMObjectStatusLarge" />
-				</m:VBox>
+				</m:VBox> -->
 				<!--<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">-->
 				<!--	<m:Title text="Working Since:" class="sapUiTinyMarginBottom"/>-->
 				<!--	<m:ObjectStatus text="12 Days" icon="sap-icon://shipping-status" class="sapMObjectStatusLarge"/>-->
@@ -200,20 +204,16 @@
 		<sections>
 			<ObjectPageSection
 				titleUppercase="false"
-				id="basicSection"
 				title="{i18n>objectPageBasicText}">
 				<subSections>
-					<ObjectPageSubSection
-						title="Contact Details"
-						titleUppercase="false">
+					<ObjectPageSubSection title="Contact Details">
 						<blocks>
 							<m:VBox class="sapUiSmallMargin">
 								<f:SimpleForm
-									editable="false"
+									editable="true"
 									layout="ColumnLayout"
-									maxContainerCols="2"
 									columnsM="2"
-									columnsL="3"
+									columnsL="4"
 									columnsXL="4">
 									<f:content>
 										<m:Label text="Contact Number" />
@@ -229,35 +229,27 @@
 							</m:VBox>
 						</blocks>
 					</ObjectPageSubSection>
-					<ObjectPageSubSection
-						title="Local Address"
-						titleUppercase="false">
+					<ObjectPageSubSection title="Local Address">
 						<blocks>
 							<m:VBox class="sapUiSmallMargin">
 								<f:SimpleForm
-									editable="false"
+									editable="true"
 									layout="ColumnLayout">
 									<f:content>
 										<m:Label text="Address" />
-										<m:Text
-											id="nameText"
-											text="{emp>emp_main_first}" />
+										<m:Text text="{emp>emp_main_first}" />
 										<m:Label text="Region" />
 										<m:Text text="{emp>emp_main_first}" />
 										<m:Label text="State" />
 										<m:Text text="{emp>emp_main_first}" />
 										<m:Label text="Country" />
-										<m:Text
-											id="countryText"
-											text="{emp>emp_main_first}" />
+										<m:Text text="{emp>emp_main_first}" />
 									</f:content>
 								</f:SimpleForm>
 							</m:VBox>
 						</blocks>
 					</ObjectPageSubSection>
-					<ObjectPageSubSection
-						title="Permanent Address"
-						titleUppercase="false">
+					<ObjectPageSubSection title="Permanent Address">
 						<blocks>
 							<m:VBox class="sapUiSmallMargin">
 								<f:SimpleForm
@@ -285,7 +277,7 @@
 				title="Verification"
 				importance="Medium">
 				<subSections>
-					<ObjectPageSubSection>
+					<ObjectPageSubSection title="Identification">
 						<blocks>
 							<m:Label text="PAN Card" />
 							<m:Text text="{emp>emp_main_dob}" />
@@ -301,9 +293,7 @@
 							<m:Text text="{emp>emp_main_dob}" />
 						</blocks>
 					</ObjectPageSubSection>
-					<ObjectPageSubSection
-						title="Passport"
-						titleUppercase="false">
+					<ObjectPageSubSection title="Passport">
 						<blocks>
 							<m:Label text="PAN Card" />
 							<m:Text text="{emp>emp_main_dob}" />
@@ -316,6 +306,99 @@
 							<m:Label text="Driving Card" />
 							<m:Text text="{emp>emp_main_dob}" />
 							<m:Label text="SSN" />
+							<m:Text text="{emp>emp_main_dob}" />
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection
+				titleUppercase="false"
+				title="Bank Details"
+				importance="Medium">
+				<subSections>
+					<ObjectPageSubSection title="Bank Details">
+						<blocks>
+							<m:Label text="Bank Name" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Account Number" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="IFSC Code" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Branch Name" />
+							<m:Text text="{emp>emp_main_dob}" />
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection
+				titleUppercase="false"
+				title="Leave Details"
+				importance="Medium">
+				<subSections>
+					<ObjectPageSubSection title="Leave Details">
+						<blocks>
+							<m:Label text="Leave Type" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Leave Start Date" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Leave End Date" />
+							<m:Text text="{emp>emp_main_dob}" />
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection
+				titleUppercase="false"
+				title="Performance"
+				importance="Medium">
+				<subSections>
+					<ObjectPageSubSection title="Performance">
+						<blocks>
+							<m:Label text="Performance" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Rating" />
+							<m:Text text="{emp>emp_main_dob}" />
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection
+				titleUppercase="false"
+				title="Training"
+				importance="Medium">
+				<subSections>
+					<ObjectPageSubSection title="Training">
+						<blocks>
+							<m:Label text="Training" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Status" />
+							<m:Text text="{emp>emp_main_dob}" />
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection
+				titleUppercase="false"
+				title="Exit Interview"
+				importance="Medium">
+				<subSections>
+					<ObjectPageSubSection title="Exit Interview">
+						<blocks>
+							<m:Label text="Exit Interview" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Status" />
+							<m:Text text="{emp>emp_main_dob}" />
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection title="Goals Plan">
+				<subSections>
+					<ObjectPageSubSection title="Goals Plan">
+						<blocks>
+							<m:Label text="Goals Plan" />
+							<m:Text text="{emp>emp_main_dob}" />
+							<m:Label text="Status" />
 							<m:Text text="{emp>emp_main_dob}" />
 						</blocks>
 					</ObjectPageSubSection>

@@ -2,7 +2,6 @@
 	controllerName="zenployee.controller.LeaveDetail"
 	xmlns="sap.ui.table"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:u="sap.ui.unified"
 	xmlns:m="sap.m"
 	height="100%">
 	<m:Page title="Leave Details">
@@ -11,9 +10,7 @@
 				id="table"
 				selectionMode="MultiToggle"
 				rows="{/ProductCollection}"
-				visibleRowCount="7"
 				enableCellFilter="{ui>/cellFilterOn}"
-				filter="filterPrice"
 				ariaLabelledBy="title">
 				<extension>
 					<m:OverflowToolbar>
@@ -24,7 +21,6 @@
 						<m:ToggleButton
 							icon="sap-icon://complete"
 							tooltip="Show available products only"
-							press="toggleAvailabilityFilter"
 							pressed="{ui>/availabilityFilterOn}" />
 						<m:ToggleButton
 							icon="sap-icon://grid"
@@ -32,13 +28,11 @@
 							pressed="{ui>/cellFilterOn}" />
 						<m:Button
 							icon="sap-icon://decline"
-							tooltip="Clear all filters"
-							press="clearAllFilters" />
+							tooltip="Clear all filters" />
 						<m:ToolbarSeparator />
 						<m:SearchField
 							placeholder="Filter"
 							value="{ui>/globalFilter}"
-							search="filterGlobally"
 							width="15rem" />
 					</m:OverflowToolbar>
 				</extension>
@@ -107,7 +101,7 @@
 					</Column>
 				</columns>
 				<footer>
-					<m:OverflowToolbar id="infobar"/>
+					<m:OverflowToolbar id="infobar" />
 				</footer>
 			</Table>
 		</m:content>

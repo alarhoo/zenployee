@@ -41,8 +41,7 @@
 							width="50%" />
 						<Button
 							icon="sap-icon://sort"
-							type="Transparent"
-							press="onSort" />
+							type="Transparent" />
 					</OverflowToolbar>
 				</headerToolbar>
 				<items>
@@ -57,8 +56,7 @@
 							<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
 								<Link
 									text="{emp>emp_main_first} {emp>emp_main_last}"
-									target="./test-resources/sap/uxap/images/imageID_275314.png"
-									press="handlePress" />
+									target="./test-resources/sap/uxap/images/imageID_275314.png" />
 								<Label text="{emp>emp_main_designation}" />
 								<ObjectAttribute text="{emp>emp_main_last}" />
 								<ObjectIdentifier
@@ -66,7 +64,7 @@
 									text="{emp>emp_main_email}" />
 								<ObjectStatus
 									text="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"
-									state="{= ${emp>emp_main_active} === '1' ? 'Success' : 'Error'}"/>
+									state="{= ${emp>emp_main_active} === '1' ? 'Success' : 'Error'}" />
 							</VBox>
 						</HBox>
 					</CustomListItem>

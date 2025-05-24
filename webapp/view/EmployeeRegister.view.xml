@@ -1,12 +1,8 @@
 <mvc:View
 	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:uxap="sap.uxap"
-	xmlns:layout="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form"
 	xmlns:m="sap.m"
-	xmlns:u="sap.ui.unified"
-	xmlns:html="http://www.w3.org/1999/xhtml"
 	controllerName="zenployee.controller.EmployeeRegister"
 	height="100%">
 	<m:Page
@@ -14,8 +10,7 @@
 		titleLevel="H3">
 		<m:Wizard
 			id="idCreateEmployeeWizard"
-			class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
-			complete="wizardCompletedHandler">
+			class="sapUiResponsivePadding--header sapUiResponsivePadding--content">
 			<m:WizardStep
 				id="PrimaryStep"
 				title="Primary Details"
@@ -183,7 +178,6 @@
 							value="1964-03-15"
 							valueFormat="yyyy-MM-dd"
 							displayFormat="long"
-							change="handleChange"
 							class="sapUiSmallMarginBottom"
 							required="true" />
 						<m:Label text="Gender" />

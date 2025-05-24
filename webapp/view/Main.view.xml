@@ -1,7 +1,11 @@
-<mvc:View controllerName="zenployee.controller.Main"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
-    </Page>
+<mvc:View
+	controllerName="zenployee.controller.Main"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m">
+	<Page
+		id="page"
+		title="{i18n>title}">
+		<content />
+	</Page>
 </mvc:View>
