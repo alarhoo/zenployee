@@ -1,0 +1,136 @@
+{
+  "groups": [
+    {
+      "title": "Employee Self-Service",
+      "icon": "sap-icon://employee",
+      "tiles": [
+        {
+          "title": "Apply Leave",
+          "icon": "sap-icon://time-off",
+          "info": "Submit time off request",
+          "route": "applyLeave"
+        },
+        {
+          "title": "Check Leave Balance",
+          "icon": "sap-icon://calendar",
+          "info": "View remaining leave days",
+          "route": "leaveBalance"
+        },
+        {
+          "title": "Submit Timesheet",
+          "icon": "sap-icon://add-document",
+          "info": "Log your working hours",
+          "route": "submitTimesheet"
+        },
+        {
+          "title": "View Timesheet",
+          "icon": "sap-icon://inspection",
+          "info": "See submitted timesheets",
+          "route": "viewTimesheet"
+        },
+        {
+          "title": "Download Payslip",
+          "icon": "sap-icon://download",
+          "info": "Access monthly salary slip",
+          "route": "payslip"
+        },
+        {
+          "title": "My Profile",
+          "icon": "sap-icon://employee",
+          "info": "View and edit your profile",
+          "route": "myProfile"
+        }
+      ]
+    },
+    {
+      "title": "Manager Self-Service",
+      "icon": "sap-icon://manager",
+      "tiles": [
+        {
+          "title": "Approve Leaves",
+          "icon": "sap-icon://approvals",
+          "info": "Manage team leave requests",
+          "route": "approveLeaves"
+        },
+        {
+          "title": "View Team Timesheet",
+          "icon": "sap-icon://group",
+          "info": "Monitor team working hours",
+          "route": "teamTimesheet"
+        },
+        {
+          "title": "Assign Projects",
+          "icon": "sap-icon://add-activity",
+          "info": "Allocate work to employees",
+          "route": "assignProjects"
+        },
+        {
+          "title": "Performance Reviews",
+          "icon": "sap-icon://discussion",
+          "info": "Conduct evaluations and feedback",
+          "route": "performanceReview"
+        }
+      ]
+    },
+    {
+      "title": "HR & Admin",
+      "icon": "sap-icon://hr-approval",
+      "tiles": [
+        {
+          "title": "Onboard Employee",
+          "icon": "sap-icon://visits",
+          "info": "Register new joiners",
+          "route": "onboardEmployee"
+        },
+        {
+          "title": "Exit Checklist",
+          "icon": "sap-icon://log",
+          "info": "Handle resignation workflows",
+          "route": "exitChecklist"
+        },
+        {
+          "title": "Payroll Run",
+          "icon": "sap-icon://expense-report",
+          "info": "Process monthly payroll",
+          "route": "payrollRun"
+        },
+        {
+          "title": "Manage Benefits",
+          "icon": "sap-icon://insurance-house",
+          "info": "Employee insurance, wellness, etc.",
+          "route": "manageBenefits"
+        },
+        {
+          "title": "HR Reports",
+          "icon": "sap-icon://business-objects-experience",
+          "info": "Access HR dashboards",
+          "route": "hrReports"
+        }
+      ]
+    },
+    {
+      "title": "Analytics & Reports",
+      "icon": "sap-icon://business-objects-experience",
+      "tiles": [
+        {
+          "title": "Leave Trends",
+          "icon": "sap-icon://line-chart",
+          "info": "Analyze company leave data",
+          "route": "leaveTrends"
+        },
+        {
+          "title": "Attrition Dashboard",
+          "icon": "sap-icon://horizontal-bar-chart",
+          "info": "Track employee turnover",
+          "route": "attritionDashboard"
+        },
+        {
+          "title": "Headcount Analysis",
+          "icon": "sap-icon://pie-chart",
+          "info": "Visualize workforce size",
+          "route": "headcountAnalysis"
+        }
+      ]
+    }
+  ]
+}

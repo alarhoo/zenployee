@@ -1,0 +1,52 @@
+<mvc:View
+	controllerName=""
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0">
+	<IconTabBar
+		id="iconTabBar"
+		headerMode="Inline"
+		class="sapUiResponsiveContentPadding"
+		items="{
+			path: 'launchpad>/groups'
+		}">
+		<items>
+			<IconTabFilter
+				icon="{launchpad>icon}"
+				text="{launchpad>title}">
+				<VBox
+					class="sapUiSmallMargin"
+					items="{
+						path: 'launchpad>tiles'
+					}"
+					wrap="Wrap"
+					direction="Row">
+					<items>
+						<GenericTile
+							header="{launchpad>title}"
+							subheader="{launchpad>info}"
+							class="sapUiTinyMargin"
+							press=".onTilePress">
+							<tileContent>
+								<TileContent>
+									<content>
+										<!-- <ImageContent src="{launchpad>icon}" /> -->
+										<NumericContent
+											withMargin="false"
+											icon="{launchpad>icon}"
+											value="{kpivalue}"
+											valueColor="{color}"
+											indicator="{trend}"
+											scale="{scale}" />
+									</content>
+								</TileContent>
+							</tileContent>
+						</GenericTile>
+					</items>
+				</VBox>
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+</mvc:View>
