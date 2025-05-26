@@ -57,10 +57,10 @@ sap.ui.define([
 				}.bind(this)
 			)
 
-			this.getRouter().attachRouteMatched(this.onRouteChange.bind(this))
+			this.getRouter().attachRouteMatched(this._onRouteChange.bind(this))
 		},
 
-		onRouteChange: function (oEvent) {
+		_onRouteChange: function (oEvent) {
 			this.getModel('side').setProperty('/selectedKey', oEvent.getParameter('name'))
 
 			if (Device.system.phone) {
@@ -77,29 +77,16 @@ sap.ui.define([
 
 		_setToggleButtonTooltip: function (bSideExpanded) {
 			const oToggleButton = this.byId('idSideNavigationToggleButton')
-			this.getBundleText(bSideExpanded ? 'expandMenuButtonText' : 'collpaseMenuButtonText').then(function (
-				sTooltipText
-			) {
-				oToggleButton.setTooltip(sTooltipText)
-			})
+			this.getBundleText(bSideExpanded ? 'expandMenuButtonText' : 'collpaseMenuButtonText', [])
+				.then(function (sTooltipText) {
+					oToggleButton.setTooltip(sTooltipText)
+				})
 		},
 
 		handleThemeSwitch: function (oEvt) {
 			// var sTheme = oEvt.getParameters().item.getKey();
 			const sTheme = oEvt.getSource().getKey()
 			sap.ui.getCore().applyTheme(sTheme)
-		},
-		/**
-       * Returns a promises which resolves with the resource bundle value of the given key <code>sI18nKey</code>
-       *
-       * @public
-       * @param {string} sI18nKey The key
-       * @param {string[]} [aPlaceholderValues] The values which will repalce the placeholders in the i18n value
-       * @returns {Promise<string>} The promise
-       */
-		getBundleText: function (sI18nKey, aPlaceholderValues) {
-			return this.getBundleTextByModel(sI18nKey, this.getOwnerComponent().getModel('i18n'), aPlaceholderValues)
-		},
+		}
 	})
-}
-)
+})

@@ -8,6 +8,7 @@
 		description="{i18n>NotFound.description}">
 		<additionalContent>
 			<Button
+				type="Attention"
 				text="{i18n>NotFound.backToHome}"
 				press=".onNavBack" />
 		</additionalContent>

@@ -84,6 +84,10 @@
       "empInfo": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/EmployeesInfo.json"
+      },
+      "launchpad": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/Launchpad.json"
       }
     },
     "resources": {
@@ -96,9 +100,9 @@
     "routing": {
       "config": {
         "routerClass": "sap.f.routing.Router",
+        "type": "View",
         "viewType": "XML",
         "async": true,
-        "viewPath": "zenployee.view",
         "controlAggregation": "pages",
         "controlId": "idApp",
         "clearControlAggregation": false,
@@ -163,70 +167,65 @@
       ],
       "targets": {
         "Login": {
-          "viewType": "XML",
-          "viewName": "Login"
+          "name": "Login"
         },
         "NotFound": {
-          "viewType": "XML",
-          "viewName": "NotFound"
+          "name": "NotFound",
+          "path": "zenployee.view"
         },
         "Home": {
-          "viewType": "XML",
-          "viewName": "Home",
-          "parent": "ToolpageLayout",
-          "controlId": "idMainContentsApp",
-          "controlAggregation": "pages"
+          "name": "Home",
+          "path": "zenployee.view"
         },
         "ToolpageLayout": {
-          "viewType": "XML",
-          "viewName": "ToolpageLayout"
+          "name": "ToolpageLayout",
+          "path": "zenployee.view"
         },
         "FlexibleColumnLayout": {
-          "viewType": "XML",
-          "viewName": "FlexibleColumnLayout",
+          "name": "FlexibleColumnLayout",
           "controlId": "idMainContentsApp",
           "controlAggregation": "pages",
           "parent": "ToolpageLayout",
-          "viewId": "flxView"
+          "viewId": "flxView",
+          "path": "zenployee.view"
         },
         "EmployeeMaster": {
-          "viewType": "XML",
-          "viewName": "EmployeeMaster",
+          "name": "EmployeeMaster",
           "parent": "FlexibleColumnLayout",
           "controlId": "flxColumnLayout",
-          "controlAggregation": "beginColumnPages"
+          "controlAggregation": "beginColumnPages",
+          "path": "zenployee.view"
         },
         "EmployeeDetail": {
-          "viewType": "XML",
-          "viewName": "EmployeeDetail",
+          "name": "EmployeeDetail",
           "parent": "FlexibleColumnLayout",
           "controlId": "flxColumnLayout",
-          "controlAggregation": "midColumnPages"
+          "controlAggregation": "midColumnPages",
+          "path": "zenployee.view"
         },
         "EmployeeRegister": {
-          "viewType": "XML",
-          "viewName": "EmployeeRegister",
+          "name": "EmployeeRegister",
           "controlId": "idMainContentsApp",
           "controlAggregation": "pages",
-          "parent": "ToolpageLayout"
+          "parent": "ToolpageLayout",
+          "path": "zenployee.view"
         },
         "LeaveMaster": {
-          "viewType": "XML",
-          "viewName": "LeaveMaster",
+          "name": "LeaveMaster",
           "controlAggregation": "beginColumnPages",
           "controlId": "flxColumnLayout",
-          "parent": "FlexibleColumnLayout"
+          "parent": "FlexibleColumnLayout",
+          "path": "zenployee.view"
         },
         "LeaveDetail": {
-          "viewType": "XML",
-          "viewName": "LeaveDetail",
+          "name": "LeaveDetail",
           "parent": "FlexibleColumnLayout",
           "controlId": "flxColumnLayout",
-          "controlAggregation": "midColumnPages"
+          "controlAggregation": "midColumnPages",
+          "path": "zenployee.view"
         },
         "Dashboard": {
-          "viewType": "XML",
-          "viewName": "Dashboard"
+          "name": "Dashboard"
         }
       }
     }
