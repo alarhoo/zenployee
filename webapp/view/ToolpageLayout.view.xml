@@ -1,88 +1,15 @@
 <mvc:View
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
 	controllerName="zenployee.controller.ToolpageLayout"
 	height="100%"
 	xmlns:tnt="sap.tnt">
-	<tnt:ToolPage
-		id="idToolPage"
-		class="sapUiDemoToolPage">
+	<tnt:ToolPage id="idToolPage">
 		<tnt:header>
-			<tnt:ToolHeader>
-				<Button
-					id="idSideNavigationToggleButton"
-					icon="sap-icon://menu2"
-					type="Transparent"
-					press=".onButtonSideNavPress"
-					tooltip="{i18n>collpaseMenuButtonText}">
-					<layoutData>
-						<OverflowToolbarLayoutData priority="NeverOverflow" />
-					</layoutData>
-				</Button>
-				<ToolbarSpacer />
-				<Title
-					text="{i18n>appTitle}"
-					level="H2" />
-				<ToolbarSpacer />
-				<MenuButton
-					id="userButton"
-					icon="sap-icon://customer"
-					text="Manjunath">
-					<menu>
-						<Menu>
-							<MenuItem
-								text="{i18n>menuButtonHelpText}"
-								icon="sap-icon://sys-help" />
-							<MenuItem
-								text="{i18n>menuButtonThemeText}"
-								icon="sap-icon://palette">
-								<items>
-									<MenuItem
-										text="Fiori 3 Light"
-										key="sap_fiori_3"
-										press="handleThemeSwitch" />
-									<MenuItem
-										text="Fiori 3 Dark"
-										key="sap_fiori_3_dark"
-										press="handleThemeSwitch" />
-									<MenuItem
-										text="Belize Plus"
-										key="sap_belize_plus"
-										press="handleThemeSwitch" />
-									<MenuItem
-										text="Belize"
-										key="sap_belize"
-										press="handleThemeSwitch" />
-									<MenuItem
-										text="Fiori HCB"
-										key="sap_fiori_3_hcb"
-										press="handleThemeSwitch" />
-									<MenuItem
-										text="Fiori HCW"
-										key="sap_fiori_3_hcw"
-										press="handleThemeSwitch" />
-									<MenuItem
-										text="Belize HCB"
-										key="sap_belize_hcb"
-										press="handleThemeSwitch" />
-									<MenuItem
-										text="Belize HCW"
-										key="sap_belize_hcw"
-										press="handleThemeSwitch" />
-								</items>
-							</MenuItem>
-							<MenuItem
-								text="{i18n>menuButtonLogoutText}"
-								icon="sap-icon://log" />
-						</Menu>
-					</menu>
-				</MenuButton>
-				<!--<Button id="userButton" icon="sap-icon://customer" text="User Name" type="Transparent" press=".onUserNamePress">-->
-				<!--	<layoutData>-->
-				<!--		<OverflowToolbarLayoutData closeOverflowOnInteraction="false"/>-->
-				<!--	</layoutData>-->
-				<!--</Button>-->
-			</tnt:ToolHeader>
+			<core:Fragment
+				fragmentName="zenployee.fragments.Shell"
+				type="XML" />
 		</tnt:header>
 		<tnt:sideContent>
 			<tnt:SideNavigation selectedKey="{side>/selectedKey}">

@@ -8,7 +8,8 @@
 	height="100%">
 	<f:DynamicPage
 		id="dynamicPageLeaveMaster"
-		toggleHeaderOnTitleClick="false">
+		toggleHeaderOnTitleClick="false"
+		class="sapUiNoContentPadding">
 		<!-- DynamicPage Title -->
 		<f:title>
 			<f:DynamicPageTitle>
@@ -22,13 +23,11 @@
 			<List
 				id="listEmployees"
 				headerText="Employees"
-				mode="None"
 				items="{
 					path: 'emp>/'
 				}"
 				growing="true"
-				growingThreshold="15"
-				class="sapUiMediumMarginBottom"
+				growingThreshold="150"
 				sticky="HeaderToolbar">
 				<headerToolbar>
 					<OverflowToolbar>
@@ -48,46 +47,39 @@
 					<CustomListItem
 						type="Active"
 						press="onListItemPress">
-						<HBox>
-							<!--<core:Icon size="2rem" src="sap-icon://attachment-photo" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>-->
+						<HBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
 							<Avatar
 								src="./test-resources/sap/uxap/images/imageID_275314.png"
-								class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
-							<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
-								<Link
-									text="{emp>emp_main_first} {emp>emp_main_last}"
-									target="./test-resources/sap/uxap/images/imageID_275314.png" />
-								<Label text="{emp>emp_main_designation}" />
-								<ObjectAttribute text="{emp>emp_main_last}" />
-								<ObjectIdentifier
-									title="{emp>emp_main_dob}"
-									text="{emp>emp_main_email}" />
-								<ObjectStatus
-									text="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"
-									state="{= ${emp>emp_main_active} === '1' ? 'Success' : 'Error'}" />
-							</VBox>
+								class="sapUiSmallMarginEnd" />
+							<FlexBox
+								alignItems="Start"
+								justifyContent="SpaceBetween"
+								width="100%">
+								<VBox>
+									<Title
+										text="{emp>emp_main_first} {emp>emp_main_last}"
+										titleStyle="H4" />
+									<ObjectAttribute text="{emp>emp_main_designation}" />
+									<Link
+										text="{emp>emp_main_email}"
+										href="mailto:{emp>emp_main_email}" />
+								</VBox>
+								<VBox class="sapUiSmallMarginEnd">
+									<ObjectIdentifier title="{emp>emp_main_id}" />
+									<ObjectStatus
+										text="{= ${emp>emp_main_billable} === '1' ? 'Full-time' : 'Contractor'}"
+										state="{= ${emp>emp_main_billable} === '1' ? 'Success' : 'Warning'}" />
+									<ObjectStatus
+										icon="{= ${emp>emp_main_active} === '1' ? 'sap-icon://sys-enter' : 'sap-icon://sys-cancel'}"
+										text="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"
+										state="{= ${emp>emp_main_active} === '1' ? 'Indication14' : 'Indication12'}"
+										inverted="true" />
+								</VBox>
+							</FlexBox>
 						</HBox>
 					</CustomListItem>
 				</items>
 			</List>
-			<!--<List id="idListProduct" items="{ path: 'emp>/', sorter: { path: 'emp_main_first' } }">-->
-			<!--	<headerToolbar>-->
-			<!--		<Toolbar>-->
-			<!--			<Title text="JSON Model Data"/>-->
-			<!--			<ToolbarSpacer/>-->
-			<!--			<SearchField width="50%" search=".onFilterProducts"/>-->
-			<!--		</Toolbar>-->
-			<!--	</headerToolbar>-->
-			<!--	<items>-->
-			<!--		<ObjectListItem icon="./test-resources/sap/uxap/images/imageID_275314.png" title="{emp>emp_main_first} {emp>emp_main_last}"-->
-			<!--			number="{emp>emp_main_active}" type="Active" press="onItemSelected">-->
-			<!--			<firstStatus>-->
-			<!--				<ObjectStatus text="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"-->
-			<!--					state="{= ${emp>emp_main_active} === '1' ? 'Success' : 'Error'}"></ObjectStatus>-->
-			<!--			</firstStatus>-->
-			<!--		</ObjectListItem>-->
-			<!--	</items>-->
-			<!--</List>-->
 		</f:content>
 		<!-- DynamicPage Footer -->
 		<f:footer>

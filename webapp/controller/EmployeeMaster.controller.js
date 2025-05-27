@@ -13,7 +13,10 @@ sap.ui.define([
 	_Controller.prototype.onInit = function () {}
 
 	_Controller.prototype.onListItemPress = function () {
-		const nextUIState = this.getOwnerComponent().getHelper().getNextUIState(1)
+		let nextUIState = null
+		this.getOwnerComponent().getHelper().then(function (oHelper) {
+			nextUIState = oHelper.getCurrentUIState(1)
+		})
 		const path = event.getSource().getBindingContext('emp').getPath()
 		const employee = path.split('/').slice(-1).pop()
 

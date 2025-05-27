@@ -1,0 +1,45 @@
+<mvc:View
+	controllerName=""
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.f"
+	xmlns:m="sap.m"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0">
+	<ShellBar
+		title="Zenployee"
+		secondTitle="Short description"
+		homeIcon="../img/logo.png"
+		showNotifications="true"
+		notificationsNumber="2">
+		<!-- <menu>
+				<m:Menu>
+					<m:MenuItem
+						text="Flight booking"
+						icon="sap-icon://flight" />
+					<m:MenuItem
+						text="Car rental"
+						icon="sap-icon://car-rental" />
+				</m:Menu>
+			</menu> -->
+		<profile>
+			<m:Avatar initials="UI" />
+		</profile>
+		<searchManager>
+			<SearchManager
+				enableSuggestions="true"
+				suggestionItems="{
+					path: 'launchpad>/groups/0/tiles',
+					sorter: {
+						path: 'Name'
+					}
+				}">
+				<suggestionItems>
+					<m:SuggestionItem
+						text="{launchpad>title}"
+						key="{launchpad>route}" />
+				</suggestionItems>
+			</SearchManager>
+		</searchManager>
+	</ShellBar>
+</mvc:View>

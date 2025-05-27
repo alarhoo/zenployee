@@ -13,8 +13,9 @@ sap.ui.define([
 			let sLayout = oEvent.getParameters().arguments.layout
 			// If there is no layout parameter, query for the default level 0 layout (normally OneColumn)
 			if (!sLayout) {
-				const oNextUIState = this.getOwnerComponent().getHelper().getNextUIState(0)
-				sLayout = oNextUIState.layout
+				this.getOwnerComponent().getHelper().then(function (oHelper) {
+					sLayout = oHelper.getCurrentUIState(0).layout
+				})
 			}
 			// Update the layout of the FlexibleColumnLayout
 			if (sLayout) {
@@ -52,8 +53,10 @@ sap.ui.define([
 		// Update the close/fullscreen buttons visibility
 		_updateUIElements: function () {
 			const oModel = this.getOwnerComponent().getModel()
-			const oUIState = this.getOwnerComponent().getHelper().getCurrentUIState()
-			oModel.setData(oUIState)
+			this.getOwnerComponent().getHelper().then(function (oHelper) {
+				const oUIState = oHelper.getCurrentUIState()
+				oModel.setData(oUIState)
+			})
 		},
 
 		onExit: function () {
