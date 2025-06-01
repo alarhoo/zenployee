@@ -1,13 +1,13 @@
 <mvc:View
-	displayBlock="true"
-	controllerName="zenployee.controller.EmployeeMaster"
-	height="100%"
+	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
+	controllerName="zenployee.controller.EmployeeMaster"
 	xmlns:f="sap.f"
-	xmlns:mvc="sap.ui.core.mvc">
+	displayBlock="true"
+	height="100%">
 	<f:DynamicPage
-		id="idDynamicPage"
-		toggleHeaderOnTitleClick="false">
+		toggleHeaderOnTitleClick="false"
+		class="sapUiNoContentPadding">
 		<!-- DynamicPage Title -->
 		<f:title>
 			<f:DynamicPageTitle>
@@ -18,34 +18,70 @@
 		</f:title>
 		<!-- DynamicPage Content -->
 		<f:content>
-			<List items="{emp>/}">
-				<ObjectListItem
-					title="{emp>emp_main_first} {emp>emp_main_last}"
-					number="{emp>emp_main_id}"
-					numberUnit=""
-					icon="/test-resources/sap/uxap/images/imageID_275314.png"
-					press="onListItemPress"
-					type="Active">
-					<firstStatus>
-						<ObjectStatus
-							text="{= ${emp>emp_main_billable} === '1' ? 'Full-time' : 'Contractor'}"
-							state="{= ${emp>emp_main_billable} === '1' ? 'Success' : 'Warning'}" />
-					</firstStatus>
-					<secondStatus>
-						<ObjectStatus
-							icon="{= ${emp>emp_main_active} === '1' ? 'sap-icon://sys-enter' : 'sap-icon://sys-cancel'}"
-							text="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"
-							state="{= ${emp>emp_main_active} === '1' ? 'Indication14' : 'Indication12'}"
-							inverted="true" />
-					</secondStatus>
-					<!-- <markers>
-						<ObjectMarker type="Favorite" />
-						<ObjectMarker type="Locked" />
-					</markers> -->
-					<ObjectAttribute text="{emp>emp_main_designation}" />
-					<ObjectAttribute text="{emp>emp_main_email}" />
-					<ObjectAttribute text="{emp>emp_main_dob}" />
-				</ObjectListItem>
+			<List
+				headerText="Employees"
+				items="{
+					path: 'emp>/'
+				}"
+				growing="true"
+				growingThreshold="150"
+				sticky="HeaderToolbar">
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title
+							text="Employees"
+							level="H2" />
+						<ToolbarSpacer />
+						<SearchField
+							search=".onSearch"
+							width="50%" />
+						<Button
+							icon="sap-icon://sort"
+							type="Transparent" />
+					</OverflowToolbar>
+				</headerToolbar>
+				<items>
+					<CustomListItem
+						type="Active"
+						press="onListItemPress">
+						<HBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+							<Avatar
+								src="./test-resources/sap/uxap/images/imageID_275314.png"
+								class="sapUiSmallMarginEnd" />
+							<FlexBox
+								alignItems="Start"
+								justifyContent="SpaceBetween"
+								width="100%">
+								<VBox>
+									<Title
+										text="{emp>emp_main_first} {emp>emp_main_last}"
+										titleStyle="H4"
+										class="sapUiTinyMarginBottom" />
+									<ObjectAttribute
+										text="{emp>emp_main_designation}"
+										class="sapUiTinyMarginBottom" />
+									<Link
+										text="{emp>emp_main_email}"
+										href="mailto:{emp>emp_main_email}" />
+								</VBox>
+								<VBox class="sapUiSmallMarginEnd">
+									<ObjectIdentifier
+										title="{emp>emp_main_id}"
+										class="sapUiTinyMarginBottom" />
+									<ObjectStatus
+										text="{= ${emp>emp_main_billable} === '1' ? 'Full-time' : 'Contractor'}"
+										state="{= ${emp>emp_main_billable} === '1' ? 'Success' : 'Warning'}"
+										class="sapUiTinyMarginBottom" />
+									<ObjectStatus
+										icon="{= ${emp>emp_main_active} === '1' ? 'sap-icon://sys-enter' : 'sap-icon://sys-cancel'}"
+										text="{= ${emp>emp_main_active} === '1' ? 'Active' : 'Inactive'}"
+										state="{= ${emp>emp_main_active} === '1' ? 'Indication14' : 'Indication12'}"
+										inverted="true" />
+								</VBox>
+							</FlexBox>
+						</HBox>
+					</CustomListItem>
+				</items>
 			</List>
 		</f:content>
 		<!-- DynamicPage Footer -->
