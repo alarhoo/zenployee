@@ -1,15 +1,11 @@
 <mvc:View
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
-	xmlns:core="sap.ui.core"
 	controllerName="zenployee.controller.ToolpageLayout"
 	height="100%"
 	xmlns:tnt="sap.tnt">
 	<tnt:ToolPage id="idToolPage">
 		<tnt:header>
-			<core:Fragment
-				fragmentName="zenployee.fragments.Shell"
-				type="XML" />
 		</tnt:header>
 		<tnt:sideContent>
 			<tnt:SideNavigation selectedKey="{side>/selectedKey}">

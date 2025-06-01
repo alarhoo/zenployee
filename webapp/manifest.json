@@ -122,11 +122,6 @@
           "target": ["Dashboard"]
         },
         {
-          "name": "ToolpageLayout",
-          "pattern": "ToolpageLayout",
-          "target": ["ToolpageLayout"]
-        },
-        {
           "name": "EmployeeMaster",
           "pattern": "EmployeeMaster",
           "titleTarget": "",
@@ -156,6 +151,13 @@
           "pattern": "LeaveDetail/{employee}/{layout}",
           "name": "LeaveDetail",
           "target": ["LeaveMaster", "LeaveDetail"]
+        },
+        {
+          "name": "HolidayMaster",
+          "pattern": "HolidayMaster",
+          "titleTarget": "",
+          "greedy": false,
+          "target": ["HolidayMaster"]
         },
         {
           "name": "Home",
@@ -224,8 +226,16 @@
           "controlAggregation": "midColumnPages",
           "path": "zenployee.view"
         },
+        "HolidayMaster": {
+          "name": "HolidayMaster",
+          "controlAggregation": "beginColumnPages",
+          "controlId": "flxColumnLayout",
+          "parent": "FlexibleColumnLayout",
+          "path": "zenployee.view"
+        },
         "Dashboard": {
-          "name": "Dashboard"
+          "name": "Dashboard",
+          "path": "zenployee.view"
         }
       }
     }
