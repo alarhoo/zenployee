@@ -238,6 +238,17 @@
           "path": "zenployee.view"
         }
       }
+    },
+    "componentUsages": {
+      "ComponentContainer": {
+        "name": "sap.ui.core.ComponentContainer",
+        "settings": {
+          "name": "zenployee",
+          "settings": {
+            "mainView": "zenployee.view.App"
+          }
+        }
+      }
     }
   }
 }
